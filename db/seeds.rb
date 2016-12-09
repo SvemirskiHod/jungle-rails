@@ -132,5 +132,19 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+user = User.create!(
+  first_name: 'Bob',
+  last_name: 'Smith',
+  email: 'bob@example.com',
+  password: 'test1234'
+)
 
+product_count = Product.count
+1.upto(50) {
+  user.reviews.create!(
+    product_id: Random.rand(product_count - 1) + 1,
+    description: 'This product sucks!',
+    rating: Random.rand(4) + 1
+  )
+}
 puts "DONE!"

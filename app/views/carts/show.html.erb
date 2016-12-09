@@ -1,5 +1,6 @@
 <section class="cart-show">
 
+<% if cart.length > 0 %>
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
@@ -33,6 +34,7 @@
     </table>
   </div>
 
+
   <div class="row">
     <div class="col-xs-12">
       <%= form_tag orders_path do %>
@@ -49,5 +51,11 @@
       <% end %>
     </div>
   </div>
-
+  <% else %>
+  <div class="alert alert-info" role="alert">
+    <h3 class="alert-heading">Looks like there's nothing here!</h3>
+    <h5><%= link_to "Return to home page to add some items to your cart", root_path %></h5>
+    </h2>
+    </div>
+  <% end %>
 </section>
