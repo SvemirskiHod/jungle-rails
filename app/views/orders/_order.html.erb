@@ -12,6 +12,6 @@
       <%= item.quantity %>
     </td>
       <td>
-      <%= item.total_price_cents %>
+      <%= number_to_currency((item.total_price_cents.to_f)/100) %>
     </td>
   </tr>

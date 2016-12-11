@@ -21,28 +21,40 @@
           <dt>Quantity</dt>
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
-          <dd><%= @product.price %></dd>
+          <dd><%= number_to_currency(@product.price) %></dd>
         </dl>
 
-        <% if current_user %>
-          <div>
-            <%= form_for [@product, @review] do |f| %>
-            <%= f.text_area :description %>
-            <%= f.select :rating, [1,2,3,4,5] %>
-            <%= f.submit %>
-            <% end %>
+      <% if current_user %>
+
+        <div id="review_container" class="container">
+          <div class="col-md-5">
+            <div class="form-area">
+              <%= form_for [@product, @review] do |f| %>
+              <br style="clear:both">
+                <h3 style="margin-bottom: 25px; text-align: center;">Leave a Review!</h3>
+                <div class="form-group">
+                <%= f.text_area(:description, placeholder: "Your review here", class: 'form-control') %>
+                </div>
+
+                <%= f.select :rating, [1,2,3,4,5] %>
+              <%= f.submit "Submit Review", class: "btn btn-primary pull-right" %>
+               <% end %>
+            </div>
           </div>
+        </div>
+
+
         <% end %>
 
         <div class="dl-horizontal">
         <% @product.reviews.sort { |b,a| a["created_at"] <=> b["created_at"] }.each do
           |review| %>
-
+            <div id="reviews">
             <div class="product_review">
               <dt>
                 <%= review.user["first_name"]%> <%= review.user["last_name"] %>
               </dt>
-              <dt>Rated - <%= review.rating %></dt>
+              <dt>Rated: <%= review.rating %>/5 </dt>
               <dt>
                 <% if current_user && (current_user.id == review.user.id) %>
                   <%= link_to product_review_remove_review_path(review_id: review.id, product_id: @product.id), class: 'btn btn-xs btn-danger', method: :delete do %>
@@ -54,6 +66,7 @@
               <br>
             </div>
           <% end %>
+        </div>
         </div>
 
       </div>
