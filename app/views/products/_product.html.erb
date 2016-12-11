@@ -25,4 +25,16 @@
     SOLD OUT!
     </aside>
   <% end %>
+
+  <% sum_rating = 0 %>
+  <% product.reviews.each do |r|%>
+    <% sum_rating = sum_rating + r.rating %>
+  <% end%>
+
+
+  <% if sum_rating !=0 %>
+    <aside><b>Average Rating: <%= sum_rating/product.reviews.size %>/5 </b></aside>
+  <% else %>
+     <aside><b>No one has reviewed this product</b></aside>
+  <% end %>
 </article>

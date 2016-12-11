@@ -139,11 +139,27 @@ user = User.create!(
   password: 'test1234'
 )
 
+user2 = User.create!(
+  first_name: 'Amy',
+  last_name: 'LaRochera',
+  email: 'amy@example.com',
+  password: 'test1234'
+)
+
 product_count = Product.count
-1.upto(50) {
+1.upto(20) {
   user.reviews.create!(
     product_id: Random.rand(product_count - 1) + 1,
-    description: 'This product sucks!',
+    description: 'This product changed my life!',
+    rating: Random.rand(4) + 1
+  )
+}
+
+product_count = Product.count
+1.upto(20) {
+  user2.reviews.create!(
+    product_id: Random.rand(product_count - 1) + 1,
+    description: 'Fantastic gift for friends or family!',
     rating: Random.rand(4) + 1
   )
 }
