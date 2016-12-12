@@ -8,8 +8,10 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
       redirect_to '/'
+      puts "added entry"
     else
       redirect_to '/signup'
+      puts "did not add entry"
     end
   end
 
@@ -20,3 +22,4 @@ class UsersController < ApplicationController
   end
 
 end
+

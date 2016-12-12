@@ -26,7 +26,7 @@ end
 puts "Finding or Creating Categories ..."
 
 cat1 = Category.find_or_create_by! name: 'Apparel'
-cat2 = Category.find_or_create_by! name: 'Electronics'=
+cat2 = Category.find_or_create_by! name: 'Electronics'
 cat3 = Category.find_or_create_by! name: 'Furniture'
 
 ## PRODUCTS
@@ -136,14 +136,16 @@ user = User.create!(
   first_name: 'Bob',
   last_name: 'Smith',
   email: 'bob@example.com',
-  password: 'test1234'
+  password: 'test1234',
+  password_confirmation: 'test1234'
 )
 
 user2 = User.create!(
   first_name: 'Amy',
   last_name: 'LaRochera',
   email: 'amy@example.com',
-  password: 'test1234'
+  password: 'test1234',
+  password_confirmation: 'test1234'
 )
 
 product_count = Product.count
