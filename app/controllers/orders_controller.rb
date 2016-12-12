@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     charge = perform_stripe_charge
     order  = create_order(charge)
     if order.valid?
-      UserMailer.order_confirm_mail.deliver_now
+      UserMailer.order_confirm_mail(order).deliver_now
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
     else

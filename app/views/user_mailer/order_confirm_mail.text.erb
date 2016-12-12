@@ -1,7 +1,10 @@
-Welcome to example.com,
+Thank you for your order,
 ===============================================
 
-You have successfully signed up to example.com,
-your username is:
-
-Thanks for joining and have a great day!
+ You have successfully ordered from jungle,
+ Items you have purchased:
+  <% @order.line_items.each do |item| %>
+  <%= item.product.name%>
+  <%end%>
+  Your total is: <%= number_to_currency((@order.total_cents.to_f)/100) %>
+  Thanks for ordering and have a great day!

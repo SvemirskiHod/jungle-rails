@@ -10,8 +10,15 @@
     <br>
     </p>
     <p>
-      Example sentence.
+      Items you have purchased:
+    <% @order.line_items.each do |item| %>
+      <br>
+      <%= item.product.name%>
+    <%end%>
+    <p>
+      Your total is: <%= number_to_currency((@order.total_cents.to_f)/100) %>
+      </p>
     </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p>Thanks for ordering and have a great day!</p>
   </body>
 </html>
