@@ -26,7 +26,7 @@ end
 puts "Finding or Creating Categories ..."
 
 cat1 = Category.find_or_create_by! name: 'Apparel'
-cat2 = Category.find_or_create_by! name: 'Electronics'
+cat2 = Category.find_or_create_by! name: 'Electronics'=
 cat3 = Category.find_or_create_by! name: 'Furniture'
 
 ## PRODUCTS
