@@ -1,2 +1,7 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<div class="alert alert-info" role="alert">
+  <h3 class="alert-heading">Hello admin! Visit your products or categories pages below!</h3>
+  <h5>
+    <p><%= link_to 'Products',  [:admin, :products] %></p>
+    <p><%= link_to 'Categories', [:admin, :categories] %></p>
+  </h5>
+</div>

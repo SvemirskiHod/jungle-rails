@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Product, type: :model do
 
-
-
     before(:each) do
       @category = Category.new(name: "Awesome tings")
       @product = @category.products.new(name: "Magical spoon", price: 100, quantity: 30)
